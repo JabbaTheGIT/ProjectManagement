@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AandPManagement.Models.Asset>
+
+@{
+    ViewData["Title"] = "Asset Index";
+}
+
+<h2>Asset Index</h2>
+
+<form asp-controller="Projects" asp-action="AddAsset" method="get">
+    <p>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetSerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetAnualTestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetConnections)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetPressureRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetAllocated)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetSerialNumber)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetDescription)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetAnualTestDate)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetConnections)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetPressureRating)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetLocation)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelItem => item.AssetAllocated)
+                </th>
+                <td>
+                    <a asp-action="cONFIRMaSSET" asp-route-id="@item.AssetID">Add to Project</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

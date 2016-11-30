@@ -1,0 +1,47 @@
+﻿@model AandPManagement.Models.Personnel
+
+@{
+    ViewData["Title"] = "Remove Person";
+}
+
+<h2>Remove Person</h2>
+
+<div>
+    <h4>Personnel</h4>
+    <p>This action will result in the crew member being removed from the project.</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="RemovePerson">
+        <div class="form-actions no-color">
+            <input type="submit" value="Remove" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+</div>

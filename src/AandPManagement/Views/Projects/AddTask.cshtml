@@ -1,0 +1,74 @@
+﻿@model AandPManagement.Models.ProjectTask
+
+@{
+    ViewData["Title"] = "Add Task";
+}
+
+<h2>Add a Task</h2>
+
+<form asp-action="AddTask">
+    <div class="form-horizontal">
+        <h4>ProjectTask</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ProjectID" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                Project ID
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskTitle" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TaskTitle" class="form-control" />
+                <span asp-validation-for="TaskTitle" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskDescription" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TaskDescription" class="form-control" />
+                <span asp-validation-for="TaskDescription" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskSetDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TaskSetDate" class="form-control" />
+                <span asp-validation-for="TaskSetDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskSetCompletionDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TaskSetCompletionDate" class="form-control" />
+                <span asp-validation-for="TaskSetCompletionDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TaskCompletedDate" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TaskCompletedDate" class="form-control" />
+                <span asp-validation-for="TaskCompletedDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    <input asp-for="TaskComplete" />
+                    <label asp-for="TaskComplete"></label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add Task" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

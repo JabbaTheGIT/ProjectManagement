@@ -1,0 +1,68 @@
+@model IEnumerable<AandPManagement.Models.Project>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Projects</h2>
+
+<p>
+    <a asp-action="Create">New Project</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectStartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProjectCompleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectStartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectCompleted)
+            </td>
+            <td>
+                @if (item.ProjectCompleted == false)
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ProjectID">Edit</a>
+                }
+                | <a asp-action="Details" asp-route-id="@item.ProjectID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProjectID">Close</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

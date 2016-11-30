@@ -1,0 +1,41 @@
+@model IEnumerable<AandPManagement.Models.ClientCompany>
+
+@{
+    ViewData["Title"] = "List of clients";
+}
+
+<h2>List of clients</h2>
+<p>If a Client has more than one address please ensure you state this in the name, i.e Santos Qld and Santos SA.</p>
+<p>
+    <a asp-action="Create">New Client</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ClientCompanyID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ClientCompanyID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ClientCompanyID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

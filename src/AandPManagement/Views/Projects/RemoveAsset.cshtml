@@ -1,0 +1,60 @@
+﻿@model AandPManagement.Models.Asset
+
+@{
+    ViewData["Title"] = "Remove Asset";
+}
+
+<h2>Remove Asset</h2>
+
+<div>
+    <h4>Asset</h4>
+    <p>This action will result in the asset being removed from the project.</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetSerialNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetSerialNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetLocation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetPressureRating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetPressureRating)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetAnualTestDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetAnualTestDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AssetAllocated)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AssetAllocated)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="RemoveAsset">
+        <div class="form-actions no-color">
+            <input type="submit" value="Remove" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

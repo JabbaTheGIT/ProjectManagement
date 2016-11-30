@@ -1,0 +1,251 @@
+@model AandPManagement.Models.ProjectViewModels.SelectedProjectViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Project</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @foreach (var item in Model.SelectedProject)
+        {
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectClient)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectClient)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectTitle)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectTitle)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectLocation)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectLocation)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectStartDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectStartDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectCompletedDate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectCompletedDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(modelItem => item.ProjectCompleted)
+            </dt>
+            <dd>
+                @Html.DisplayFor(modelItem => item.ProjectCompleted)
+            </dd>
+        }
+    </dl>
+</div>
+<hr />
+<br/>
+<div>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Position
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    Phone Number
+                </th>
+                <th>
+                    
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.SelectedProjectPersonnel != null)
+            {
+                @foreach (var item in Model.SelectedProjectPersonnel)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhoneNumber)
+                    </td>
+                    <td>
+                        <a asp-action="RemovePerson" asp-route-id="@item.PersonnelID">Remove</a>
+                    </td>
+                </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="AddPerson">Add Personnel</a>
+    </div>
+</div>
+<hr />
+<br />
+<div>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Serial Number
+                </th>
+                <th>
+                    Pressure rating
+                </th>
+                <th>
+                    Annual Test Date
+                </th>
+                <th>
+                    Lift Test Date
+                </th>
+                <th>
+                    Dimensions
+                </th>
+                <th>
+                    Weight
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.SelectedProjectAssets != null)
+            {
+                @foreach (var item in Model.SelectedProjectAssets)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetSerialNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetPressureRating)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetAnualTestDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetLiftDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetDimensions)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AssetWeight)
+                        </td>
+                        <td>
+                            <a asp-action="RemoveAsset" asp-route-id="@item.AssetID">Remove</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="AddAsset">Add Asset</a>
+    </div>
+</div>
+<hr />
+<br />
+<div>
+    <table class="table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Task
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Task Set Date
+                </th>
+                <th>
+                    Target Completion Date
+                </th>
+                <th>
+                    Completed
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.SelectedProjectTasks != null)
+            {
+                @foreach (var item in Model.SelectedProjectTasks)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskSetDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskSetCompletionDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TaskComplete)
+                        </td>
+                        <td>
+                            <a asp-action="EditTask" asp-route-id="@item.ProjectTaskID">Edit</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <a asp-action="AddTask" asp-route-id="@ViewData["ProjectID"]">Add Task</a>
+    </div>
+</div>
+<hr />
+<br />
+<div>
+    <a asp-action="Edit" asp-route-id="@ViewData["ProjectID"]">Edit</a> |
+    <a asp-action="Index">Back to List</a> |
+@foreach (var item in Model.SelectedProject)
+{
+    @if (item.ProjectCompleted == true)
+    {       
+        <a asp-action="ConfirmDelete" asp-route-id="@ViewData["ProjectID"]">Delete Project</a>
+    }
+}
+</div>

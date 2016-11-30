@@ -1,0 +1,79 @@
+@model IEnumerable<AandPManagement.Models.Asset>
+
+@{
+    ViewData["Title"] = "Asset Index";
+}
+
+<h2>List of assets</h2>
+
+<p>
+    <a asp-action="Create">New Asset</a>
+</p>
+<br/>
+<form asp-controller="Assets" asp-action="Index" method="get">
+    <p>
+        Search: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter"/>
+    </p>
+</form>
+<p>Search by serial number, location or description.</p>
+<br/>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetSerialNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetAnualTestDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetConnections)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetPressureRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetAllocated)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetSerialNumber)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetDescription)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetAnualTestDate)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetConnections)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetPressureRating)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetLocation)
+            </th>
+            <th>
+                @Html.DisplayFor(modelItem => item.AssetAllocated)
+            </th>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AssetID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AssetID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AssetID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
