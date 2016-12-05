@@ -13,6 +13,7 @@ using AandPManagement.Services;
 namespace AandPManagement.Controllers
 {
     [Authorize]
+    [RequireHttps]
     public class ManageController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;

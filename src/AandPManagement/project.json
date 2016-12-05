@@ -46,8 +46,8 @@
       "type": "build"
     },
     "Microsoft.AspNetCore.Session": "1.1.0",
-    "Microsoft.Extensions.Caching.Memory": "1.1.0"
-  },
+    "Microsoft.Extensions.Caching.Memory": "1.1.0",
+    "SendGrid.NetCore": "1.0.0-rtm-00002"},
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",

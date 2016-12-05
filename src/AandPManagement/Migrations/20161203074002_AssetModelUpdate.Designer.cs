@@ -8,9 +8,10 @@ using AandPManagement.Data;
 namespace AandPManagement.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20161203074002_AssetModelUpdate")]
+    partial class AssetModelUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -161,24 +162,6 @@ namespace AandPManagement.Migrations
                     b.ToTable("ProjectTask");
                 });
 
-            modelBuilder.Entity("AandPManagement.Models.Training", b =>
-                {
-                    b.Property<int>("TrainingID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("DateOfTraining");
-
-                    b.Property<int>("PersonnelID");
-
-                    b.Property<string>("TypeTraining");
-
-                    b.HasKey("TrainingID");
-
-                    b.HasIndex("PersonnelID");
-
-                    b.ToTable("Training");
-                });
-
             modelBuilder.Entity("AandPManagement.Models.Asset", b =>
                 {
                     b.HasOne("AandPManagement.Models.Project", "Project")
@@ -205,14 +188,6 @@ namespace AandPManagement.Migrations
                     b.HasOne("AandPManagement.Models.Project", "Project")
                         .WithMany("ProjectTasks")
                         .HasForeignKey("ProjectID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("AandPManagement.Models.Training", b =>
-                {
-                    b.HasOne("AandPManagement.Models.Personnel", "Personnel")
-                        .WithMany("Training")
-                        .HasForeignKey("PersonnelID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

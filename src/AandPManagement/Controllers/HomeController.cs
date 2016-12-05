@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AandPManagement.Controllers
 {
+    [RequireHttps]
     public class HomeController : Controller
     {
         public IActionResult Index()

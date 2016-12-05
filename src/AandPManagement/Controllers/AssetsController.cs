@@ -10,6 +10,7 @@ using AandPManagement.Models;
 
 namespace AandPManagement.Controllers
 {
+    [RequireHttps]
     public class AssetsController : Controller
     {
         private readonly ProjectContext _context;

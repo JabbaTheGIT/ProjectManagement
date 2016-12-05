@@ -8,9 +8,10 @@ using AandPManagement.Data;
 namespace AandPManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161205042124_ApplicationUser")]
+    partial class ApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -21,6 +22,8 @@ namespace AandPManagement.Data.Migrations
                     b.Property<string>("Id");
 
                     b.Property<int>("AccessFailedCount");
+
+                    b.Property<int>("ApplicationUserID");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -52,6 +55,10 @@ namespace AandPManagement.Data.Migrations
 
                     b.Property<string>("UserName")
                         .HasAnnotation("MaxLength", 256);
+
+                    b.Property<string>("UsersName");
+
+                    b.Property<string>("UsersRole");
 
                     b.HasKey("Id");
 

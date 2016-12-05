@@ -9,16 +9,22 @@ using AandPManagement.Data;
 using AandPManagement.Models;
 using AandPManagement.Models.ProjectViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace AandPManagement.Controllers
 {
+    [RequireHttps]
+    //[Authorize(Roles = "Administrator")]
     public class ProjectsController : Controller
     {
         private readonly ProjectContext _context;
+        private readonly ApplicationDbContext _appContext;
 
-        public ProjectsController(ProjectContext context)
+        public ProjectsController(ProjectContext context, ApplicationDbContext appContext)
         {
-            _context = context;    
+            _context = context;
+            _appContext = appContext;
         }
 
         // GET: Projects
@@ -54,7 +60,7 @@ namespace AandPManagement.Controllers
                 return NotFound();
             }
 
-            return View(viewModel);
+            return View(viewModel);            
         }
 
         // GET: Projects/Create
@@ -438,5 +444,20 @@ namespace AandPManagement.Controllers
             return View(projectTask);
         }
 
+
+        //Creates Roles, only used once when making app. 
+        //For some reason using config to create roles did not work
+        public async Task RoleCreation()
+        {
+            var admin = new IdentityRole("Admin");
+            _appContext.Roles.Add(admin);
+            var manager = new IdentityRole("Manager");
+            _appContext.Roles.Add(manager);
+            var user = new IdentityRole("User");
+            _appContext.Roles.Add(user);
+            var client = new IdentityRole("Client");
+            _appContext.Roles.Add(client);
+            await _appContext.SaveChangesAsync();
+        }
     }
 }

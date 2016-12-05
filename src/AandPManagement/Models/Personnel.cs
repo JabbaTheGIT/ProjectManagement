@@ -29,5 +29,7 @@ namespace AandPManagement.Models
         //For Foreign Key Access
         public int? ProjectID { get; set; }
         public Project Project { get; set; }
+
+        public ICollection<Training> Training { get; set; }
     }
 }

@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AandPManagement.Data;
 using AandPManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AandPManagement.Controllers
 {
+    [RequireHttps]
     public class ClientCompaniesController : Controller
     {
         private readonly ProjectContext _context;

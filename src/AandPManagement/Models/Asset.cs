@@ -18,6 +18,14 @@ namespace AandPManagement.Models
         [Display(Name = "Description")]
         public string AssetDescription { get; set; }
 
+        [Display(Name = "MPI Test Date")]
+        [DataType(DataType.Date)]
+        public DateTime? AssetMPITestDate { get; set; }
+
+        [Display(Name = "Visual Test Date")]
+        [DataType(DataType.Date)]
+        public DateTime? AssetVisualTestDate { get; set; }
+
         [Display(Name = "Anual Test Date")]
         [DataType(DataType.Date)]
         public DateTime? AssetAnualTestDate { get; set; }
@@ -30,7 +38,7 @@ namespace AandPManagement.Models
         [DataType(DataType.Date)]
         public DateTime? AssetCOCDate { get; set; }
 
-        [Display(Name = "Lift Test Date")]
+        [Display(Name = "Load Test Date")]
         [DataType(DataType.Date)]
         public DateTime? AssetLiftDate { get; set; }
 
@@ -53,6 +61,9 @@ namespace AandPManagement.Models
 
         [Display(Name = "Allocated to Project")]
         public bool AssetAllocated { get; set; }
+
+        [Display(Name = "Project Pre-Job Check")]
+        public bool AssetPreJobCheck { get; set; }
 
         //For Foreign Key Access
         public int? ProjectID { get; set; }

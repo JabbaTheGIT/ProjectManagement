@@ -51,11 +51,24 @@ namespace AandPManagement
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+                {
+                    config.SignIn.RequireConfirmedEmail = true;
+                })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("Manager", policy => policy.RequireRole("Admin", "Manager"));
+                options.AddPolicy("User", policy => policy.RequireRole("Admin", "Manager", "User"));
+                options.AddPolicy("Client", policy => policy.RequireRole("Admin", "Manager", "User", "Client"));
+            });
+
+
             services.AddDistributedMemoryCache();
             services.AddSession();
 
@@ -63,7 +76,24 @@ namespace AandPManagement
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                //password settings
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 8;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
 
+                //lockout settings
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                options.Lockout.MaxFailedAccessAttempts = 10;
+
+                //Cookie settings
+                options.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(2);
+                options.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                options.Cookies.ApplicationCookie.LogoutPath = "/Account/LogOff";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
