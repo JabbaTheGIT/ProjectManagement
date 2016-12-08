@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace AandPManagement.Controllers
 {
     [RequireHttps]
+    [Authorize(policy:"Manager")]
     public class ClientCompaniesController : Controller
     {
         private readonly ProjectContext _context;

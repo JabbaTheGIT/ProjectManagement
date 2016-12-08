@@ -65,6 +65,9 @@ namespace AandPManagement.Models
         [Display(Name = "Project Pre-Job Check")]
         public bool AssetPreJobCheck { get; set; }
 
+        [Display(Name = "Person signed off pre-job complete")]
+        public string AssetPreJobCompletedBy { get; set; }
+
         //For Foreign Key Access
         public int? ProjectID { get; set; }
         public Project Project { get; set; }

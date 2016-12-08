@@ -1,0 +1,40 @@
+﻿@model AandPManagement.Models.Training
+
+@{
+    ViewData["Title"] = "Edit Training";
+}
+
+<h2>Edit Training</h2>
+
+<form asp-action="EditTraining">
+    <div class="form-horizontal">
+        <h4>Personnel Training</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="TypeTraining" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TypeTraining" class="form-control" />
+                <span asp-validation-for="TypeTraining" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfTraining" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateOfTraining" class="form-control" />
+                <span asp-validation-for="DateOfTraining" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Changes" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

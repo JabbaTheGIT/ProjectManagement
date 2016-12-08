@@ -1,0 +1,33 @@
+﻿@model AandPManagement.Models.Training
+
+@{
+    ViewData["Title"] = "Delete Training";
+}
+<h2>Confirm Deletion</h2>
+
+<div>
+    <h4>Training</h4>
+    <p>Deleting will result in this training item being deleted from this person</p>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeTraining)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TypeTraining)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfTraining)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfTraining)
+        </dd>
+    </dl>
+
+    <form asp-action="DeleteTraining">
+        <div class="form-actions no-color">
+            <input type="submit" value="DELETE" class="btn btn-default" /> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </form>
+</div>

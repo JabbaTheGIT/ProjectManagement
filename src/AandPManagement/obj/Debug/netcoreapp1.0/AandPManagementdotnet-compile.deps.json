@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "301ce710e07f903facac023fd2cc3c92928c0040"
+    "signature": "900323c6ad91490c60efca9953d88d85ae5c629c"
   },
   "compilationOptions": {
     "defines": [
@@ -38,7 +38,8 @@
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "Microsoft.AspNetCore.Session": "1.1.0",
           "Microsoft.Extensions.Caching.Memory": "1.1.0",
-          "SendGrid.NetCore": "1.0.0-rtm-00002"
+          "SendGrid.NetCore": "1.0.0-rtm-00002",
+          "Microsoft.AspNetCore.Authorization": "1.1.0"
         },
         "compile": {
           "AandPManagement.dll": {}
@@ -134,10 +135,11 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Cookies.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authorization/1.0.0": {
+      "Microsoft.AspNetCore.Authorization/1.1.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
           "Microsoft.Extensions.Options": "1.1.0",
+          "NETStandard.Library": "1.6.1",
           "System.Security.Claims": "4.3.0"
         },
         "compile": {
@@ -447,7 +449,7 @@
       },
       "Microsoft.AspNetCore.Mvc.Core/1.0.1": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "1.0.0",
+          "Microsoft.AspNetCore.Authorization": "1.1.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.0",
           "Microsoft.AspNetCore.Http": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
@@ -2981,7 +2983,8 @@
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
           "Microsoft.AspNetCore.Session": "1.1.0",
           "Microsoft.Extensions.Caching.Memory": "1.1.0",
-          "SendGrid.NetCore": "1.0.0-rtm-00002"
+          "SendGrid.NetCore": "1.0.0-rtm-00002",
+          "Microsoft.AspNetCore.Authorization": "1.1.0"
         },
         "runtime": {
           "AandPManagement.dll": {}
@@ -3077,10 +3080,11 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.Authentication.Cookies.dll": {}
         }
       },
-      "Microsoft.AspNetCore.Authorization/1.0.0": {
+      "Microsoft.AspNetCore.Authorization/1.1.0": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "1.1.0",
           "Microsoft.Extensions.Options": "1.1.0",
+          "NETStandard.Library": "1.6.1",
           "System.Security.Claims": "4.3.0"
         },
         "runtime": {
@@ -3390,7 +3394,7 @@
       },
       "Microsoft.AspNetCore.Mvc.Core/1.0.1": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "1.0.0",
+          "Microsoft.AspNetCore.Authorization": "1.1.0",
           "Microsoft.AspNetCore.Hosting.Abstractions": "1.1.0",
           "Microsoft.AspNetCore.Http": "1.0.0",
           "Microsoft.AspNetCore.Mvc.Abstractions": "1.0.1",
@@ -5839,10 +5843,10 @@
       "serviceable": true,
       "sha512": "sha512-zWhEmMwAqLnQIn3eWGlfioBkKngLB/cEqhqw+jAPPrelH8nNNCnHKIoC6ZQf5oSPmpTX9vZU7XEOrpXHFxSQGw=="
     },
-    "Microsoft.AspNetCore.Authorization/1.0.0": {
+    "Microsoft.AspNetCore.Authorization/1.1.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-iVFQ5xHSyxmfWYdl5B/xIFzXgm4SRgYQUKlLFVNGfEhbbjw0Ur2pfVrEvpENrhHFOQ2XAZcuFlGxSIzZwsVrMg=="
+      "sha512": "sha512-dqveE6pqsnzkab2vw+aFExFYeCikF/T+GKZW9ki8dwJuN7M2+jJcgWtYAv83q7NjBARVh2xH8xf0ahzeuXL/WQ=="
     },
     "Microsoft.AspNetCore.Cors/1.0.0": {
       "type": "package",

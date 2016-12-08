@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AandPManagement.Data;
 using AandPManagement.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace AandPManagement.Controllers
 {
     [RequireHttps]
+    [Authorize(policy:"User")]
     public class AssetsController : Controller
     {
         private readonly ProjectContext _context;
@@ -63,7 +66,7 @@ namespace AandPManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AssetID,AssetAllocated,AssetAnualTestDate,AssetCOCDate,AssetConnections,AssetDescription,AssetDimensions,AssetLiftDate,AssetLocation,AssetMajorTestDate,AssetPressureRating,AssetSerialNumber,AssetWeight,COC,ProjectID")] Asset asset)
+        public async Task<IActionResult> Create([Bind("AssetID,AssetAllocated,AssetAnualTestDate,AssetCOCDate,AssetConnections,AssetDescription,AssetDimensions,AssetLiftDate,AssetLocation,AssetMajorTestDate,AssetPressureRating,AssetSerialNumber,AssetWeight,COC,AssetMPITestDate,AssetVisualTestDate,ProjectID")] Asset asset)
         {
             if (ModelState.IsValid)
             {
@@ -88,6 +91,11 @@ namespace AandPManagement.Controllers
             {
                 return NotFound();
             }
+            if (asset.AssetPreJobCompletedBy == null) asset.AssetPreJobCompletedBy = "";
+            ViewData["PreJobName"] = asset.AssetPreJobCompletedBy.ToString();
+            
+            HttpContext.Session.SetString("PreJobBool", asset.AssetPreJobCheck.ToString());
+            ViewData["SerialNumber"] = asset.AssetSerialNumber.ToString();
             ViewData["ProjectID"] = new SelectList(_context.Projects, "ProjectID", "ProjectClient", asset.ProjectID);
             return View(asset);
         }
@@ -97,7 +105,7 @@ namespace AandPManagement.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AssetID,AssetAllocated,AssetAnualTestDate,AssetCOCDate,AssetConnections,AssetDescription,AssetDimensions,AssetLiftDate,AssetLocation,AssetMajorTestDate,AssetPressureRating,AssetSerialNumber,AssetWeight,COC,ProjectID")] Asset asset)
+        public async Task<IActionResult> Edit(int id, [Bind("AssetID,AssetAllocated,AssetAnualTestDate,AssetCOCDate,AssetConnections,AssetDescription,AssetDimensions,AssetLiftDate,AssetLocation,AssetMajorTestDate,AssetPressureRating,AssetSerialNumber,AssetWeight,COC,AssetMPITestDate,AssetVisualTestDate,ProjectID,AssetPreJobCheck,AssetPreJobCompletedBy")] Asset asset)
         {
             if (id != asset.AssetID)
             {
@@ -108,6 +116,14 @@ namespace AandPManagement.Controllers
             {
                 try
                 {
+                    if(HttpContext.Session.GetString("PreJobBool").ToUpper() == "FALSE" && asset.AssetPreJobCheck == true)
+                    {
+                        asset.AssetPreJobCompletedBy = User.Identity.Name;
+                    }
+                    if(asset.AssetPreJobCheck == false)
+                    {
+                        asset.AssetPreJobCompletedBy = "";
+                    }
                     _context.Update(asset);
                     await _context.SaveChangesAsync();
                 }
@@ -128,6 +144,7 @@ namespace AandPManagement.Controllers
             return View(asset);
         }
 
+        [Authorize(policy:"Manager")]
         // GET: Assets/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -145,6 +162,7 @@ namespace AandPManagement.Controllers
             return View(asset);
         }
 
+        [Authorize(policy: "Manager")]
         // POST: Assets/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

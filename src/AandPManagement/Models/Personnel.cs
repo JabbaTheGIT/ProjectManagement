@@ -16,7 +16,7 @@ namespace AandPManagement.Models
 
         [Required]
         [Display(Name = "Position")]
-        public int Position { get; set; }
+        public string Position { get; set; }
 
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]

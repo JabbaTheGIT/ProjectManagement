@@ -13,24 +13,10 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="AssetID" />
         <div class="form-group">
-            <label asp-for="AssetAnualTestDate" class="col-md-2 control-label"></label>
+            <label asp-for="AssetSerialNumber" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetAnualTestDate" class="form-control" />
-                <span asp-validation-for="AssetAnualTestDate" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AssetCOCDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AssetCOCDate" class="form-control" />
-                <span asp-validation-for="AssetCOCDate" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="AssetConnections" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="AssetConnections" class="form-control" />
-                <span asp-validation-for="AssetConnections" class="text-danger" />
+                <input asp-for="AssetSerialNumber" class="form-control" />
+                <span asp-validation-for="AssetSerialNumber" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -41,24 +27,24 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AssetDimensions" class="col-md-2 control-label"></label>
+            <label asp-for="AssetPressureRating" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetDimensions" class="form-control" />
-                <span asp-validation-for="AssetDimensions" class="text-danger" />
+                <input asp-for="AssetPressureRating" class="form-control" />
+                <span asp-validation-for="AssetPressureRating" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AssetLiftDate" class="col-md-2 control-label"></label>
+            <label asp-for="AssetConnections" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetLiftDate" class="form-control" />
-                <span asp-validation-for="AssetLiftDate" class="text-danger" />
+                <input asp-for="AssetConnections" class="form-control" />
+                <span asp-validation-for="AssetConnections" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AssetLocation" class="col-md-2 control-label"></label>
+            <label asp-for="AssetAnualTestDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetLocation" class="form-control" />
-                <span asp-validation-for="AssetLocation" class="text-danger" />
+                <input asp-for="AssetAnualTestDate" class="form-control" />
+                <span asp-validation-for="AssetAnualTestDate" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -69,17 +55,31 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AssetPressureRating" class="col-md-2 control-label"></label>
+            <label asp-for="AssetLiftDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetPressureRating" class="form-control" />
-                <span asp-validation-for="AssetPressureRating" class="text-danger" />
+                <input asp-for="AssetLiftDate" class="form-control" />
+                <span asp-validation-for="AssetLiftDate" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="AssetSerialNumber" class="col-md-2 control-label"></label>
+            <label asp-for="AssetCOCDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="AssetSerialNumber" class="form-control" />
-                <span asp-validation-for="AssetSerialNumber" class="text-danger" />
+                <input asp-for="AssetCOCDate" class="form-control" />
+                <span asp-validation-for="AssetCOCDate" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="COC" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="COC" class="form-control" />
+                <span asp-validation-for="COC" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="AssetDimensions" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="AssetDimensions" class="form-control" />
+                <span asp-validation-for="AssetDimensions" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -90,10 +90,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="COC" class="col-md-2 control-label"></label>
+            <label asp-for="AssetLocation" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="COC" class="form-control" />
-                <span asp-validation-for="COC" class="text-danger" />
+                <input asp-for="AssetLocation" class="form-control" />
+                <span asp-validation-for="AssetLocation" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

@@ -12,6 +12,7 @@ using AandPManagement.Models;
 using AandPManagement.Models.AccountViewModels;
 using AandPManagement.Services;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using AandPManagement.Data;
 
 namespace AandPManagement.Controllers
 {
@@ -21,6 +22,7 @@ namespace AandPManagement.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly ApplicationDbContext _context;
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
@@ -28,12 +30,15 @@ namespace AandPManagement.Controllers
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            ApplicationDbContext context,
             IEmailSender emailSender,
             ISmsSender smsSender,
             ILoggerFactory loggerFactory)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            //Added
+            _context = context;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
@@ -65,7 +70,7 @@ namespace AandPManagement.Controllers
                 {
                     if (!await _userManager.IsEmailConfirmedAsync(user))
                     {
-                        ModelState.AddModelError(string.Empty, "You must have a confirmed email to login. Email confirmation could take 5 mins please check your inbox or spam folder.");
+                        ModelState.AddModelError(string.Empty, "You must have a confirmed email to login. Email confirmation could take 5 mins please check your Inbox or Junk Email folder.");
                         return View(model);
                     }
                 }
@@ -84,7 +89,7 @@ namespace AandPManagement.Controllers
                 }
                 if (result.IsLockedOut)
                 {
-                    _logger.LogWarning(2, "User account locked out.");
+                    _logger.LogWarning(2, "User account locked out, please contact Administrator.");
                     return View("Lockout");
                 }
                 else
@@ -135,7 +140,7 @@ namespace AandPManagement.Controllers
                 }
                 AddErrors(result);
             }
-
+            
             // If we got this far, something failed, redisplay form
             return View(model);
         }
@@ -448,6 +453,39 @@ namespace AandPManagement.Controllers
                 ModelState.AddModelError(string.Empty, "Invalid code.");
                 return View(model);
             }
+        }
+
+        //GET: /Account/UpdatePrivs
+        [Authorize(policy: "Admin")]
+        [HttpGet]
+        public ActionResult UpdatePrivs()
+        {
+            ViewBag.Name = new SelectList(_context.Roles.ToList(), "Name", "Name");
+            ViewBag.UserName = new SelectList(_context.Users.ToList(), "UserName", "UserName");
+            return View();
+        }
+
+        //POST: /Account/UpdatePrivs
+        [Authorize(policy: "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdatePrivs(RegisterViewModel model, ApplicationUser user)
+        {
+            ApplicationUser userFound = (ApplicationUser) await _userManager.FindByNameAsync(user.UserName);
+            var roles = await _userManager.GetRolesAsync(userFound);
+
+            string userRole = "";
+            foreach(var role in roles)
+            {
+                userRole = role;
+            }
+
+            await _userManager.RemoveFromRoleAsync(userFound, userRole);    
+            await _userManager.AddToRoleAsync(userFound, model.Name);
+
+            var claims = await _userManager.GetClaimsAsync(userFound);
+
+            return RedirectToAction("Index", "Home");
         }
 
         #region Helpers

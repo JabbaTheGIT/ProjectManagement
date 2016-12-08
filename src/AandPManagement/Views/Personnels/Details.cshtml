@@ -1,4 +1,4 @@
-@model AandPManagement.Models.Personnel
+@model AandPManagement.Models.ProjectViewModels.SelectedPersonnel
 
 @{
     ViewData["Title"] = "Details";
@@ -10,33 +10,75 @@
     <h4>Personnel</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Position)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Position)
-        </dd>
+        @foreach (var item in Model.SelectedPerson)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => item.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Email)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => item.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => item.PhoneNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.PhoneNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => item.Position)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Position)
+            </dd>
+        }
     </dl>
 </div>
+
+@if (Model.SelectedPersonTraining != null)
+{
+    <div>
+        <h4>Training</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Training Type
+                    </th>
+                    <th>
+                        Date Completed
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SelectedPersonTraining)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TypeTraining)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfTraining)
+                    </td>
+                    <td>
+                        <a asp-action="DeleteTraining" asp-route-id="@item.TrainingID">Delete</a> |
+                        <a asp-action="EditTraining" asp-route-id="@item.TrainingID">Edit</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.PersonnelID">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@ViewData["PersonnelID"]">Edit</a> |
+    <a asp-action="AddTraining" asp-route-id="@ViewData["PersonnelID"]">Add Training</a> |
     <a asp-action="Index">Back to List</a>
 </div>

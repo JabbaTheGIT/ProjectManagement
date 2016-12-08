@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using AandPManagement.Data;
 using AandPManagement.Models;
 using AandPManagement.Services;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 
 namespace AandPManagement
 {
@@ -42,6 +44,7 @@ namespace AandPManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -58,16 +61,16 @@ namespace AandPManagement
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
-
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => policy.RequireRole("Admin"));
                 options.AddPolicy("Manager", policy => policy.RequireRole("Admin", "Manager"));
                 options.AddPolicy("User", policy => policy.RequireRole("Admin", "Manager", "User"));
                 options.AddPolicy("Client", policy => policy.RequireRole("Admin", "Manager", "User", "Client"));
+                options.AddPolicy("ClientView", policy => policy.RequireClaim("ClientCompany"));
             });
 
+            services.AddMvc();
 
             services.AddDistributedMemoryCache();
             services.AddSession();

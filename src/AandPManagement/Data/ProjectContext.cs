@@ -18,6 +18,7 @@ namespace AandPManagement.Data
         public DbSet<Project> Projects { get; set; }
         public DbSet<ProjectTask> ProjectTasks { get; set; }
         public DbSet<ClientCompany> ClientCompanys { get; set; }
+        public DbSet<Training> Trainings { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +28,7 @@ namespace AandPManagement.Data
             modelBuilder.Entity<Project>().ToTable("Project");
             modelBuilder.Entity<ProjectTask>().ToTable("ProjectTask");
             modelBuilder.Entity<ClientCompany>().ToTable("ClientCompany");
+            modelBuilder.Entity<Training>().ToTable("Training");
         }
 
     }

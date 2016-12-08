@@ -8,9 +8,10 @@ using AandPManagement.Data;
 namespace AandPManagement.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class ProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20161206001724_TrainingUpdate")]
+    partial class TrainingUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -43,8 +44,6 @@ namespace AandPManagement.Migrations
                     b.Property<DateTime?>("AssetMajorTestDate");
 
                     b.Property<bool>("AssetPreJobCheck");
-
-                    b.Property<string>("AssetPreJobCompletedBy");
 
                     b.Property<int?>("AssetPressureRating");
 
@@ -93,8 +92,7 @@ namespace AandPManagement.Migrations
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("Position")
-                        .IsRequired();
+                    b.Property<int>("Position");
 
                     b.Property<int?>("ProjectID");
 

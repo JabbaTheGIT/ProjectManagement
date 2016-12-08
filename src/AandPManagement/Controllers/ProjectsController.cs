@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace AandPManagement.Controllers
 {
     [RequireHttps]
-    //[Authorize(Roles = "Administrator")]
+    [Authorize(Roles = "Manager, Admin")]
     public class ProjectsController : Controller
     {
         private readonly ProjectContext _context;
@@ -232,6 +232,7 @@ namespace AandPManagement.Controllers
         //GET: Projects/AddTask
         public IActionResult AddTask(int? id)
         {
+            ViewData["ProjectID"] = id;
             return View();
         }
 
@@ -444,20 +445,5 @@ namespace AandPManagement.Controllers
             return View(projectTask);
         }
 
-
-        //Creates Roles, only used once when making app. 
-        //For some reason using config to create roles did not work
-        public async Task RoleCreation()
-        {
-            var admin = new IdentityRole("Admin");
-            _appContext.Roles.Add(admin);
-            var manager = new IdentityRole("Manager");
-            _appContext.Roles.Add(manager);
-            var user = new IdentityRole("User");
-            _appContext.Roles.Add(user);
-            var client = new IdentityRole("Client");
-            _appContext.Roles.Add(client);
-            await _appContext.SaveChangesAsync();
-        }
     }
 }

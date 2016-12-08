@@ -9,6 +9,10 @@ using Microsoft.Extensions.Logging;
 using AandPManagement.Models;
 using AandPManagement.Models.ManageViewModels;
 using AandPManagement.Services;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using AandPManagement.Data;
+using AandPManagement.Models.AccountViewModels;
+using System.Security.Claims;
 
 namespace AandPManagement.Controllers
 {

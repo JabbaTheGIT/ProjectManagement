@@ -37,8 +37,8 @@ namespace AandPManagement.Models
         public bool ProjectCompleted { get; set; }
 
         public int? ClientCompanyID { get; set; }
-
         public ClientCompany ClientCompany { get; set; }
+
         public ICollection<ProjectTask> ProjectTasks { get; set; }
         public ICollection<Asset> Assets { get; set; }
         public ICollection<Personnel> Crew { get; set; }
