@@ -1,12 +1,12 @@
---temp-output:C:\Projects\AandPManagement\src\AandPManagement\obj\Debug\netcoreapp1.0\
---out:C:\Projects\AandPManagement\src\AandPManagement\bin\Debug\netcoreapp1.0\AandPManagement.dll
---define:DEBUG
+--temp-output:C:\Projects\AandPManagement\src\AandPManagement\obj\Release\netcoreapp1.0\
+--out:C:\Projects\AandPManagement\src\AandPManagement\bin\Release\netcoreapp1.0\AandPManagement.dll
+--define:RELEASE
 --define:TRACE
 --define:NETCOREAPP1_0
 --suppress-warning:CS1701
 --suppress-warning:CS1702
 --suppress-warning:CS1705
---optimize:False
+--optimize:True
 --emit-entry-point:True
 --output-name:AandPManagement
 --file-version:1.0.0.0
@@ -237,7 +237,7 @@
 --reference:C:\Users\willi\.nuget\packages\System.Threading.Timer\4.3.0\ref\netstandard1.2\System.Threading.Timer.dll
 --reference:C:\Users\willi\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll
 --reference:C:\Users\willi\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll
---resource:"C:\Projects\AandPManagement\src\AandPManagement\obj\Debug\netcoreapp1.0\AandPManagementdotnet-compile.deps.json",AandPManagement.deps.json
+--resource:"C:\Projects\AandPManagement\src\AandPManagement\obj\Release\netcoreapp1.0\AandPManagementdotnet-compile.deps.json",AandPManagement.deps.json
 C:\Projects\AandPManagement\src\AandPManagement\Program.cs
 C:\Projects\AandPManagement\src\AandPManagement\Startup.cs
 C:\Projects\AandPManagement\src\AandPManagement\Controllers\AccountController.cs

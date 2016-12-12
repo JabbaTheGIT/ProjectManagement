@@ -1,14 +1,15 @@
-﻿-d:DEBUG
+﻿-d:RELEASE
 -d:TRACE
 -d:NETCOREAPP1_0
 -nowarn:CS1701
 -nowarn:CS1702
 -nowarn:CS1705
+-optimize
 -debug:full
 -nostdlib
 -nologo
-"C:\Projects\AandPManagement\src\AandPManagement\bin\src\AandPManagement\obj\Debug\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
--out:"C:\Projects\AandPManagement\src\AandPManagement\bin\src\AandPManagement\bin\Debug\netcoreapp1.0\AandPManagement.dll"
+"C:\Projects\AandPManagement\src\AandPManagement\obj\Release\netcoreapp1.0\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Projects\AandPManagement\src\AandPManagement\bin\Release\netcoreapp1.0\AandPManagement.dll"
 -r:"C:\Users\willi\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\dotnet5.4\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\willi\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\netstandard1.6\Microsoft.ApplicationInsights.AspNetCore.dll"
 -r:"C:\Users\willi\.nuget\packages\Microsoft.AspNet.WebApi.Client\5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll"
@@ -233,7 +234,7 @@
 -r:"C:\Users\willi\.nuget\packages\System.Threading.Timer\4.3.0\ref\netstandard1.2\System.Threading.Timer.dll"
 -r:"C:\Users\willi\.nuget\packages\System.Xml.ReaderWriter\4.3.0\ref\netstandard1.3\System.Xml.ReaderWriter.dll"
 -r:"C:\Users\willi\.nuget\packages\System.Xml.XDocument\4.3.0\ref\netstandard1.3\System.Xml.XDocument.dll"
--resource:"C:\Projects\AandPManagement\src\AandPManagement\bin\src\AandPManagement\obj\Debug\netcoreapp1.0\AandPManagementdotnet-compile.deps.json",AandPManagement.deps.json
+-resource:"C:\Projects\AandPManagement\src\AandPManagement\obj\Release\netcoreapp1.0\AandPManagementdotnet-compile.deps.json",AandPManagement.deps.json
 "C:\Projects\AandPManagement\src\AandPManagement\Program.cs"
 "C:\Projects\AandPManagement\src\AandPManagement\Startup.cs"
 "C:\Projects\AandPManagement\src\AandPManagement\Controllers\AccountController.cs"
